@@ -1,0 +1,30 @@
+<section class="mt-4 text-white" *ngIf="proyecto">
+    <div class="container border-mb-style pb-3" *ngIf="isLogged">
+        <div class="row my-2">
+            <section class="bg-secondary bg-gradient p-3">
+                <h2 class="h3 text-center">Editar Registro</h2>            
+                <form (ngSubmit)="onUpdate()" class="w-50 mx-auto" novalidate #f="ngForm">
+                    <div class="form-group">
+                        <label for="" class="form-label">Titulo</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="titulo">
+                   </div>
+                   <div class="form-group">
+                        <label for="" class="form-label">Url</label>
+                        <input type="text" class="form-control" id="url" name="url" [(ngModel)]="url">
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Descripción</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="descripcion"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="form-label">Imagen</label>
+                        <input type="file" name="imagenProject" id="imagenProject" class="form-control" (change)="uploadImage($event)" [(ngModel)]="imagenProject">
+                    </div>
+                    <div class="form-group mt-2">
+                        <button class="btn btn-success btn-sm">Actualizar</button>
+                    </div>                            
+                </form>
+            </section>
+        </div>        
+    </div>    
+</section>  

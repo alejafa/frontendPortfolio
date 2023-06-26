@@ -1,0 +1,14 @@
+<hr class="container d-block">
+<section class="container p-5 mb-4 rounded border mx-auto w-50 bg-dark-subtle">
+	<form #f="ngForm" (ngSubmit)="OnLogin()" class="mx-auto w-auto" novalidate>
+	  <div class="mb-3">
+	    <label for="nombreUsuario" class="form-label">Correo</label>
+	    <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" [(ngModel)]="nombreUsuario" required />	    
+	  </div>
+	  <div class="mb-3">
+	    <label for="password" class="form-label">Password</label>
+	    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" required />
+	  </div>	  
+	  <button type="submit" class="btn btn-primary w-100 btn-sm">Submit</button>
+	</form>
+</section>

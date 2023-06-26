@@ -1,0 +1,24 @@
+<section class="mt-4 text-white" *ngIf="experiencia">
+	<div class="container border-mb-style pb-3" *ngIf="isLogged">
+		<div class="row my-2">
+			<section class="bg-secondary bg-gradient p-3">
+				<h2 class="h3 text-center">Editar Registro</h2>
+				<form (ngSubmit)="onUpdate()" class="w-75 mx-auto" novalidate #f="ngForm">
+					<div class="form-group">
+						<label for="">Nombre de la empresa</label>
+						<input type="text" class="form-control" id="tituloEx" name="tituloEx" [(ngModel)]="tituloEx">
+					</div>
+					<div class="form-group">
+						<label for="">Descripción de la tarea</label>
+						<textarea class="form-control" id="descripcionEx" name="descripcionEx" rows="3" [(ngModel)]="descripcionEx"></textarea>
+					</div>
+					<div class="form-group mt-2 text-center">
+						<button class="btn btn-success btn-sm">
+							Actualizar
+						</button>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</section>

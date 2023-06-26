@@ -1,0 +1,140 @@
+<div class="mt-4">
+        <div class="container border-mb-style pb-3">
+          <section class="row">
+            <h2 class="h2 bg-custom p-2 mb-3 rounded pb-3 shadow">Skills y habilidades</h2>
+            <div class="col-12 d-flex justify-content-end" *ngIf="isLogged" (click)="editarSkills()">
+                  <button class="btn btn-warning" *ngIf="!editSkills">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>                
+            </div>
+             <div class="col-12 d-flex justify-content-end" *ngIf="isLogged" (click)="returnSkills()">                 
+                  <button class="btn btn-danger" *ngIf="!backSkills">
+                    <i class="fa-solid fa-xmark"></i>
+                  </button>
+            </div>        
+            <div class="row" *ngIf="!editSkills">              
+              <div class="col-sm-6 col-md-4 text-center" *ngFor="let sk of skill">
+                  <circle-progress 
+                  [percent]="sk.porcentaje"     
+                  [radius]="60"      
+                  [outerStrokeColor]="'#33FFFC'"
+                  [outerStrokeGradientStopColor]="'#07AFAD'"
+                  [innerStrokeColor]="'#21A6A4'"      
+                  [animation]="true"
+                  [showSubtitle] = false
+                  ></circle-progress>
+                  <p>{{ sk.nombreSk}}</p>                  
+              </div> 
+              
+                    <!--<div class="col-sm-6 col-md-4 text-center">
+                          <circle-progress 
+                          [percent]="59"     
+                          [radius]="60"     
+                          [outerStrokeColor]="'#FF5733'"
+                          [outerStrokeGradientStopColor]="'#A12308'"
+                          [innerStrokeColor]="'#A63921'"      
+                          [animation]="true"
+                          [showSubtitle] = false
+                        ></circle-progress>
+                        <p>CSS</p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 text-center">
+                          <circle-progress 
+                          [percent]="89"     
+                          [radius]="60"     
+                          [outerStrokeColor]="'#E1F510'"
+                          [outerStrokeGradientStopColor]="'#CCC702'"
+                          [innerStrokeColor]="'#99A60C'"       
+                          [animation]="true"
+                          [showSubtitle] = false
+                        ></circle-progress>
+                        <p>JS</p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 text-center">
+                          <circle-progress 
+                          [percent]="80"     
+                          [radius]="60"      
+                          [outerStrokeColor]="'#33FFFC'"
+                          [outerStrokeGradientStopColor]="'#07AFAD'"
+                          [innerStrokeColor]="'#21A6A4'"      
+                          [animation]="true"
+                          [showSubtitle] = false
+                        ></circle-progress>
+                        <p>HTML</p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 text-center">
+                          <circle-progress 
+                          [percent]="59"     
+                          [radius]="60"     
+                          [outerStrokeColor]="'#FF5733'"
+                          [outerStrokeGradientStopColor]="'#A12308'"
+                          [innerStrokeColor]="'#A63921'"      
+                          [animation]="true"
+                          [showSubtitle] = false
+                        ></circle-progress>
+                        <p>CSS</p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 text-center">
+                          <circle-progress 
+                          [percent]="89"     
+                          [radius]="60"     
+                          [outerStrokeColor]="'#E1F510'"
+                          [outerStrokeGradientStopColor]="'#CCC702'"
+                          [innerStrokeColor]="'#99A60C'"       
+                          [animation]="true"
+                          [showSubtitle] = false
+                        ></circle-progress>
+                        <p>JS</p>
+                    </div>-->     
+            </div>                          
+          </section>
+          <section class="row py-3" *ngIf="!backSkills">
+            <div class="col-12 d-flex justify-content-end">
+              <button class="btn btn-primary my-1" (click)="nuevoForm()">
+                Nuevo Skills
+              </button>
+            </div>   
+            <div>
+                <div class="table-responsive" *ngIf="hiddeTable">
+                    <!--<div *ngIf="!editForm">-->
+                        <table class="table" border="1">
+                          <thead>
+                            <tr class="text-center">                              
+                              <th scope="col">Habilidad</th>
+                              <th scope="col">Porcentaje</th>                              
+                              <th scope="col">Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let sk of skill" class="text-center">                              
+                              <td>{{sk.nombreSk}}</td>
+                              <td>{{sk.porcentaje}}</td>                              
+                              <td class="text-center">
+                                <a routerLink="/editar-skills/{{sk.id}}" class="btn btn-warning me-1 btn-sm">Editar</a>
+                                <button class="btn btn-danger btn-sm" (click)="delete(sk.id)">Eliminar</button>
+                               </td>                              
+                            </tr>
+                           </tbody>
+                        </table>
+                    <!--</div>-->
+                </div>
+            </div>            
+            <section *ngIf="editForm">
+                <h2 class="h3 text-center">Nuevo Registro Skills</h2>
+                <form (ngSubmit)="onCreate()" class="w-50 mx-auto">
+                  <div class="form-group">
+                    <label for="" class="form-label">Conocimiento</label>
+                    <input type="text" class="form-control" name="nombreSk" id="nombreSk" [(ngModel)]="nombreSk">
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="form-label">Porcentaje</label>
+                    <input type="text" class="form-control" name="porcentaje" id="porcentaje" [(ngModel)]="porcentaje">
+                  </div>                  
+                  <div class="form-group mt-2">
+                    <button class="btn btn-success btn-sm">Crear</button>
+                  </div>                            
+                </form>
+            </section>                                
+          </section>
+      </div>
+</div>

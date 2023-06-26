@@ -1,0 +1,95 @@
+		<section class="mt-4">
+            <div class="container border-mb-style pb-3">
+                <section class="row">
+                    <h2 class="h2 bg-custom p-3 mb-2 rounded pb-3 shadow">Educación</h2> 
+                     <div class="col-12 d-flex justify-content-end" *ngIf="isLogged" (click)="editarEducation()">
+                          <button class="btn btn-warning" *ngIf="!editEducation">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                          </button>                
+                    </div>
+                     <div class="col-12 d-flex justify-content-end" *ngIf="isLogged" (click)="returnEducation()">
+                          <button class="btn btn-danger" *ngIf="!backEducation">
+                            <i class="fa-solid fa-xmark"></i>
+                          </button>
+                    </div>                                             
+                    <div *ngIf="!editEducation">
+                        <div *ngFor="let ed of educacion">
+                            <div class="row mt-3 border-bottom">
+                                <div class="col-sm-2">
+                                    <img src="{{ed.imagenEd}}" alt="foto" width="80%">
+                                </div>
+                                <article class="col-sm-10">
+                                    <h3>{{ed.tituloEd}}</h3>
+                                    <p>{{ed.descripcionEd}}</p>
+                                </article>
+                            </div>                            
+                        </div>                        
+                    </div>                    
+                </section>
+                <!--CRUD EDUCACION-->
+                <div class="row my-2" *ngIf="!backEducation">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button class="btn btn-primary my-2" (click)="nuevoForm()">
+                            Nueva Escuela
+                        </button>
+                    </div> 
+                    <div class="table-responsive" *ngIf="hiddeCrud">
+                    <!--<div *ngIf="!editForm">-->
+                        <table class="table" border="1">
+                          <thead>
+                            <tr class="text-center">
+                              <th scope="col">Imagen</th>                              
+                              <th scope="col">Titulo - Certificado</th>
+                              <th scope="col">Escuela</th>                              
+                              <th scope="col">Acciones</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let Edu of educacion">
+                              <td class="w-25"><img src="{{Edu.imagenEd}}" alt="" width="100"></td>
+                              <td>{{Edu.tituloEd}}</td>
+                              <td>{{Edu.nombreEd}}</td>                              
+                              <td class="text-center">                               
+                                <a routerLink="/editar-educacion/{{Edu.id}}" class="btn btn-warning me-1 btn-sm">Editar</a>
+                                <button class="btn btn-danger btn-sm" (click)="delete(Edu.id)">Eliminar</button>
+                               </td>      
+                                <!--<a href="" class="btn btn-warning me-1 btn-sm">Editar</a>
+                                <a href="" class="btn btn-danger btn-sm">Eliminar</a>
+                               </td>-->                           
+                            </tr>                          
+                           </tbody>
+                        </table>
+                    <!--</div>-->
+                    </div>                   
+                </div>
+                <!--FIN CRUD-->
+                <!--FORMULARIO CREATED EDUCACION-->               
+                <div *ngIf="editForm">
+                    <section *ngIf="editForm">
+                        <h2 class="h3 text-center">Nuevo Registro</h2>
+                        <form (ngSubmit)="onCreate()" class="w-50 mx-auto">
+                            <div class="form-group">
+                                <label for="" class="form-label">Titulo</label>
+                                <input type="text" class="form-control" name="tituloEd" id="tituloEd" [(ngModel)]="tituloEd">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Escuela</label>
+                                <input type="text" class="form-control" name="nombreEd" id="nombreEd" [(ngModel)]="nombreEd">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Descripción</label>
+                                <textarea class="form-control" name="descripcionEd" id="descripcionEd" [(ngModel)]="descripcionEd"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="form-label">Imagen</label>
+                                <input type="file" (change)="uploadImage($event)" name="imagenEd" id="imagenEd" class="form-control" [(ngModel)]="imagenEd">
+                            </div>
+                            <div class="form-group mt-2">
+                                <button class="btn btn-success btn-sm">Crear</button>
+                            </div>                            
+                        </form>
+                    </section>
+                    <!--FIN FORMULARIO-->                    
+                </div>                                                  
+            </div>
+        </section>

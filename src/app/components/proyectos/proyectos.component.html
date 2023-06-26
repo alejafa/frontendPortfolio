@@ -1,0 +1,92 @@
+		<section class="mt-4">
+            <div class="container border-mb-style pb-3">
+                <section class="row">
+                    <h2 class="h2 bg-custom p-2 mb-3 rounded pb-3 shadow">Proyectos</h2>
+                    <div class="col-12 d-flex justify-content-end" *ngIf="isLogged" (click)="editarProject()">
+                          <button class="btn btn-warning" *ngIf="!editProject">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                          </button>                
+                    </div>
+                     <div class="col-12 d-flex justify-content-end" *ngIf="isLogged" (click)="returnProject()">
+                          <button class="btn btn-danger" *ngIf="!backProject">
+                            <i class="fa-solid fa-xmark"></i>
+                          </button>
+                    </div>                               
+                </section>
+                <div class="row py-3" *ngIf="!editProject">
+                    <section class="col-md-12" *ngFor="let proj of proyecto">
+                        <section class="row">
+                            <h3>{{proj.titulo}}</h3>
+                            <div class="col-md-2">
+                                <img src="{{proj.imagenProject}}" alt="imagen" width="100"><br>
+                                <a href="{{proj.url}}" target="_blank" class="btn btn-success my-2">Ver portfolio</a>
+                            </div>
+                            <div class="col-md-10">
+                                 <p>{{proj.descripcion}}</p>     
+                            </div>                       
+                        </section>                        
+                    </section>                    
+                </div>
+                <!--CRUD PROYECTO-->
+                <div class="row mb-2" *ngIf="!backProject">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button class="btn btn-primary" (click)="nuevoForm()">
+                            Nueva Proyecto
+                        </button>
+                    </div>    
+                    <div class="table-responsive" *ngIf="hiddeCrud">
+                        <!--<div *ngIf="!editForm">-->
+                            <table class="table" border="1">
+                              <thead>
+                                <tr class="text-center">
+                                  <th scope="col">Imagen</th>
+                                  <th scope="col">Titulo</th>
+                                  <th scope="col">url</th>     
+                                  <th scope="col">Acciones</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let proj of proyecto">
+                                  <td class="w-25"><img src="{{proj.imagenProject}}" alt="" width="100"></td>
+                                  <td>{{proj.titulo}}</td>
+                                  <td>{{proj.url}}</td>                              
+                                  <td class="text-center">
+                                    <a routerLink="/editar-proyecto/{{proj.id}}" class="btn btn-warning me-1 btn-sm">Editar</a>
+                                    <button class="btn btn-danger btn-sm" (click)="delete(proj.id)">Eliminar</button>
+                                   </td>                              
+                                </tr>                          
+                               </tbody>
+                            </table>
+                        <!--</div>-->
+                    </div>
+                </div>
+                <!--FIN CRUD--> 
+                <!--FORMULARIO CREATED PROYECTO-->               
+                <section *ngIf="editForm">
+                    <h2 class="h3 text-center">Nuevo Registro</h2>
+                    <form (ngSubmit)="onCreate()" class="w-50 mx-auto">
+                        <div class="form-group">
+                            <label for="" class="form-label">Titulo</label>
+                            <input type="text" class="form-control" name="titulo" id="titulo" [(ngModel)]="titulo">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Url</label>
+                            <input type="text" class="form-control" name="url" id="url" [(ngModel)]="url">
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Descripción</label>
+                            <textarea class="form-control" name="descripcion" id="descripcion" [(ngModel)]="descripcion"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="form-label">Imagen</label>
+                            <input type="file" (change)="uploadImage($event)" name="imagenProject" id="imagenProject" class="form-control" [(ngModel)]="imagenProject">
+                        </div>
+                        <div class="form-group mt-2">
+                            <button class="btn btn-success btn-sm">Crear</button>
+                        </div>                            
+                    </form>
+                </section>    
+                <!--FIN FORMULARIO-->             
+            </div>
+        </section>        
+

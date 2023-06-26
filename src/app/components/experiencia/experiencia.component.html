@@ -1,0 +1,76 @@
+		<section class="mt-4">
+            <div class="container border-mb-style pb-3">
+                <div class="row">
+                    <h2 class="h2 bg-custom p-3 mb-2 rounded pb-3 shadow">Experiencia Laboral</h2>
+                    <div *ngIf="!isLogged">
+                        <div *ngFor="let experiencia of expe">                        
+                            <div class="col-md-2">
+                                <img src="assets/images/laboral1.jpg" alt="foto" width="100">
+                            </div>
+                            <article class="col-md-10">
+                                <h3>{{experiencia.tituloEx}}</h3>
+                                <p>{{experiencia.descripcionEx}}</p>
+                            </article>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-12 d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary" *ngIf="isLogged" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Nueva Experiencia
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <form (ngSubmit)="onCreate()" novalidate #f="ngForm">
+                            <div class="modal-body">            
+                              <div class="mb-3">
+                                <label class="form-label">Experiencia</label>
+                                <input type="email" class="form-control" id="tituloEx" name="tituloEx" [(ngModel)]="tituloEx">
+                              </div>
+                              <div class="mb-3">
+                                <label class="form-label">Descripción</label>
+                                <textarea name="descripcionEx" id="descripcionEx" class="form-control" [(ngModel)]="descripcionEx"></textarea>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                        
+                </div>                
+                <div class="table-responsive-sm" *ngIf="isLogged">
+                   <table class="table" border="1">
+                      <thead>
+                        <tr class="text-center">                              
+                          <th scope="col">Puesto de Trabajo</th>
+                          <th scope="col" class="w-50">Descripcion</th>
+                          <th scope="col">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let Exp of expe">
+                          <td>{{Exp.tituloEx}}</td>
+                          <td class="w-50">{{Exp.descripcionEx}}</td>                 
+                          <td class="text-center">
+                            <a routerLink="/editar-experiencia/{{Exp.id}}" class="btn btn-warning me-1 btn-sm">Editar</a>
+                            <button class="btn btn-danger btn-sm" (click)="delete(Exp.id)">Eliminar</button>
+                            <!--<a href="" class="btn btn-warning me-1 btn-sm">Editar</a>
+                            <a href="" class="btn btn-danger btn-sm">Eliminar</a>-->
+                           </td>                              
+                        </tr>                          
+                       </tbody>
+                   </table>
+                </div>                
+            </div>
+        </section>

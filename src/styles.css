@@ -1,0 +1,131 @@
+*{
+            font-family: 'Raleway', sans-serif;
+            font-weight: bolder;           
+        }
+
+        body{
+            background-color: rgb(240, 240, 240);
+        }   
+
+        .style_logo{
+            background-color:rgb(6, 116, 164);
+        }     
+
+        .style-brand{
+            padding: 0px 10px;            
+            font-size: 20px;
+            padding-top: 10px;
+            text-decoration: none;
+            color:#fff;            
+        }
+
+        /*menu*/
+        .navbar-nav li a{
+            color: #4E5E64;
+        }
+
+        .navbar-toggler {
+            padding: 0px;
+        }
+
+        .navbar-toggler-icon {
+    
+            background-size: 50%;
+        }
+
+        .col-sm-3.style-custom {
+            margin-top: -50px;  
+        }
+
+        .border-style{
+            border-bottom: 2px solid rgba(0, 0, 0, .3);            
+        }
+
+        /*subtitles*/
+        .bg-custom{
+            
+            /*background-color: rgb(6, 116, 164);*/
+            border:2px solid rgb(6, 116, 164);
+            color:rgb(6, 116, 164) !important;
+        }
+
+        @media (max-width:575px) {
+            .border-style{
+                border-bottom: 0px solid rgba(0, 0, 0, .3);                                            
+            }
+
+            .border-mb-st{
+                border-bottom: 1px solid rgba(0, 0, 0, .3);
+                border-width: 60%;                               
+            }
+
+            .border-mb-style{
+                background-color: rgba(147, 174, 255, 0.2);
+                padding: 20px 50px;
+            }
+        }*{
+            font-family: 'Raleway', sans-serif;
+            font-weight: bolder;           
+        }
+
+        body{
+            background-color: rgb(240, 240, 240);
+        }   
+
+        .style_logo{
+            background-color:rgb(6, 116, 164);
+        }     
+
+        .style-brand{
+            padding: 0px 10px;            
+            font-size: 20px;
+            padding-top: 10px;
+            text-decoration: none;
+            color:#fff;            
+        }
+
+        /*menu*/
+        .navbar-nav li a{
+            color: #4E5E64;
+        }
+
+        .navbar-toggler {
+            padding: 0px;
+        }
+
+        .navbar-toggler-icon {
+    
+            background-size: 50%;
+        }
+
+        .col-sm-3.style-custom {
+            margin-top: -50px;  
+        }
+
+        .border-style{
+            border-bottom: 2px solid rgba(0, 0, 0, .3);            
+        }
+
+        /*subtitles*/
+        .bg-custom{
+            
+            /*background-color: rgb(6, 116, 164);*/
+            border:2px solid rgb(6, 116, 164);
+            color:rgb(6, 116, 164) !important;
+        }
+
+        @media (max-width:575px) {
+            .border-style{
+                border-bottom: 0px solid rgba(0, 0, 0, .3);                                            
+            }
+
+            .border-mb-st{
+                border-bottom: 1px solid rgba(0, 0, 0, .3);
+                border-width: 60%;                               
+            }
+
+            .border-mb-style{
+                background-color: rgba(147, 174, 255, 0.2);
+                padding: 20px 50px;
+            }
+        }/* You can add global styles to this file, and also import other style files */
